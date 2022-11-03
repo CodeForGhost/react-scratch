@@ -281,7 +281,7 @@ const GUIComponent = props => {
                                 onSelect={onActivateTab}
                             >
                                 <TabList className={tabClassNames.tabList}>
-                                    <Tab className={localStorage.getItem("darkMode") == "false" ? tabClassNames.tabDark : tabClassNames.tab}>
+                                    <Tab className={localStorage.getItem("darkMode") == "true" ? tabClassNames.tabDark : tabClassNames.tab}>
                                         <img
                                             draggable={false}
                                             src={codeIcon}
@@ -293,7 +293,7 @@ const GUIComponent = props => {
                                         />
                                     </Tab>
                                     <Tab
-                                        className={localStorage.getItem("darkMode") == "false" ? tabClassNames.tabDark : tabClassNames.tab}
+                                        className={localStorage.getItem("darkMode") == "true" ? tabClassNames.tabDark : tabClassNames.tab}
                                         onClick={onActivateCostumesTab}
                                     >
                                         <img
@@ -315,7 +315,7 @@ const GUIComponent = props => {
                                         )}
                                     </Tab>
                                     <Tab
-                                        className={localStorage.getItem("darkMode") == "false" ? tabClassNames.tabDark : tabClassNames.tab}
+                                        className={localStorage.getItem("darkMode") == "true" ? tabClassNames.tabDark : tabClassNames.tab}
                                         onClick={onActivateSoundsTab}
                                     >
                                         <img

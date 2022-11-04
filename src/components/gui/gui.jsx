@@ -386,18 +386,17 @@ const GUIComponent = props => {
                                 }}
                             // toggleDarkMode={this.test}
                             />
-                            {/* <Box className={styles.targetWrapper}>
+                            <Box className={styles.targetWrapper}>
                                 <TargetPane
                                     stageSize={stageSize}
                                     vm={vm}
                                 />
-                            </Box> */}
+                            </Box>
                         </Box>
                     </Box>
                 </Box>
                 <DragLayer />
             </Box>
-            // </ThemeContext.Provider>
         );
     }}</MediaQuery >);
 };

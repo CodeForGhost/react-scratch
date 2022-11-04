@@ -147,48 +147,51 @@ const StageHeaderComponent = function (props) {
                             />
                         </Button>
                     </div>
+                    <div>
+                        <Button onClick={
+                            () => {
+                                let darkMode = localStorage.getItem("darkMode");
+
+                                // if user open then app in the browser first time it will be null
+                                if (darkMode === null) {
+                                    darkMode = "false";
+                                }
+
+                                if (
+                                    confirm(
+                                        `Would you like to enable ${darkMode === "false"
+                                            ? "dark"
+                                            : "light"
+                                        } mode? App will reload! Please save your work.`
+                                    ) == true
+                                ) {
+                                    localStorage.setItem(
+                                        "darkMode",
+                                        darkMode === "true" ? "false" : "true"
+                                    );
+
+                                    window.location.reload();
+                                }
+                            }} className={classNames(
+                                styles.stageCustom,
+                                // styles.stageButtonLast,
+                                (stageSizeMode === STAGE_SIZE_MODES.large) ? null : styles.stageButtonToggledOff
+                            )}><img
+                                className={styles.stageButtonIcon}
+                                draggable={false}
+                                src={darkmodeIcon}
+                            /></Button>
+                    </div>
                 </div>
             );
         header = (
             <Box className={styles.stageHeaderWrapper}>
                 <Box className={styles.stageMenuWrapper}>
                     <Controls vm={vm} />
-                    <Button onClick={
-                        () => {
-                            let darkMode = localStorage.getItem("darkMode");
 
-                            // if user open then app in the browser first time it will be null
-                            if (darkMode === null) {
-                                darkMode = "false";
-                            }
-
-                            if (
-                                confirm(
-                                    `Would you like to enable ${darkMode === "false"
-                                        ? "dark"
-                                        : "light"
-                                    } mode? App will reload! Please save your work.`
-                                ) == true
-                            ) {
-                                localStorage.setItem(
-                                    "darkMode",
-                                    darkMode === "true" ? "false" : "true"
-                                );
-
-                                window.location.reload();
-                            }
-                        }} className={classNames(
-                            styles.stageCustom,
-                            // styles.stageButtonLast,
-                            (stageSizeMode === STAGE_SIZE_MODES.large) ? null : styles.stageButtonToggledOff
-                        )}><img
-                            className={styles.stageButtonIcon}
-                            draggable={false}
-                            src={darkmodeIcon}
-                        /></Button>
-                    {/* <div className={styles.stageSizeRow}>
+                    <div className={styles.stageSizeRow}>
                         {stageControls}
-                        <div>
+                        {/* <div>
                             <Button
                                 className={styles.stageButton}
                                 onClick={onSetStageFull}
@@ -201,8 +204,8 @@ const StageHeaderComponent = function (props) {
                                     title={props.intl.formatMessage(messages.fullscreenControl)}
                                 />
                             </Button>
-                        </div>
-                    </div> */}
+                        </div> */}
+                    </div>
                 </Box>
             </Box>
         );

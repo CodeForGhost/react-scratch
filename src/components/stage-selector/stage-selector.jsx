@@ -1,12 +1,12 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {defineMessages, intlShape, injectIntl, FormattedMessage} from 'react-intl';
+import { defineMessages, intlShape, injectIntl, FormattedMessage } from 'react-intl';
 
 import Box from '../box/box.jsx';
 import ActionMenu from '../action-menu/action-menu.jsx';
 import styles from './stage-selector.css';
-import {isRtl} from 'scratch-l10n';
+import { isRtl } from 'scratch-l10n';
 
 import backdropIcon from '../action-menu/icon--backdrop.svg';
 import fileUploadIcon from '../action-menu/icon--file-upload.svg';
@@ -60,7 +60,7 @@ const StageSelector = props => {
     } = props;
     return (
         <Box
-            className={classNames(styles.stageSelector, {
+            className={classNames(localStorage.getItem("darkMode") == "true" ? styles.stageSelectorDark : styles.stageSelector, {
                 [styles.isSelected]: selected,
                 [styles.raised]: raised || dragOver,
                 [styles.receivedBlocks]: receivedBlocks
@@ -71,8 +71,8 @@ const StageSelector = props => {
             onMouseLeave={onMouseLeave}
             {...componentProps}
         >
-            <div className={styles.header}>
-                <div className={styles.headerTitle}>
+            <div className={localStorage.getItem("darkMode") == "true" ? styles.headerDark : styles.header}>
+                <div className={localStorage.getItem("darkMode") == "true" ? styles.headerTitleDark : styles.headerTitle}>
                     <FormattedMessage
                         defaultMessage="Stage"
                         description="Label for the stage in the stage selector"
@@ -82,7 +82,7 @@ const StageSelector = props => {
             </div>
             {url ? (
                 <img
-                    className={styles.costumeCanvas}
+                    className={localStorage.getItem("darkMode") == "true" ? styles.costumeCanvasDark : styles.costumeCanvas}
                     src={url}
                 />
             ) : null}

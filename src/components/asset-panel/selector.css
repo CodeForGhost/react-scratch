@@ -11,7 +11,7 @@
 }
 
 .wrapper-dark {
-    width: 150px;
+    /* width: 150px; */
     position: relative;
     display: flex;
     flex-direction: column;

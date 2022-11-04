@@ -11,6 +11,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: $motion-primary;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: white;
+}
+.background-dark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: $z-index-loader;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: $ui-dark-primary;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center;

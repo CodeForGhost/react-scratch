@@ -1,5 +1,5 @@
 import React from 'react';
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import classNames from 'classnames';
 import styles from './loader.css';
 import PropTypes from 'prop-types';
@@ -117,22 +117,22 @@ const mainMessages = {
 };
 
 class LoaderComponent extends React.Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
         this.state = {
             messageNumber: this.chooseRandomMessage()
         };
     }
-    componentDidMount () {
+    componentDidMount() {
         // Start an interval to choose a new message every 5 seconds
         this.intervalId = setInterval(() => {
-            this.setState({messageNumber: this.chooseRandomMessage()});
+            this.setState({ messageNumber: this.chooseRandomMessage() });
         }, 5000);
     }
-    componentWillUnmount () {
+    componentWillUnmount() {
         clearInterval(this.intervalId);
     }
-    chooseRandomMessage () {
+    chooseRandomMessage() {
         let messageNumber;
         const sum = messages.reduce((acc, m) => acc + m.weight, 0);
         let rand = sum * Math.random();
@@ -145,10 +145,10 @@ class LoaderComponent extends React.Component {
         }
         return messageNumber;
     }
-    render () {
+    render() {
         return (
             <div
-                className={classNames(styles.background, {
+                className={classNames(localStorage.getItem("darkMode") == "true" ? styles.backgroundDark : styles.background, {
                     [styles.fullscreen]: this.props.isFullScreen
                 })}
             >
@@ -173,7 +173,7 @@ class LoaderComponent extends React.Component {
                     <div className={styles.messageContainerOuter}>
                         <div
                             className={styles.messageContainerInner}
-                            style={{transform: `translate(0, -${this.state.messageNumber * 25}px)`}}
+                            style={{ transform: `translate(0, -${this.state.messageNumber * 25}px)` }}
                         >
                             {messages.map((m, i) => (
                                 <div

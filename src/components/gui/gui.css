@@ -39,6 +39,7 @@
         https://github.com/LLK/scratch-gui/issues/318
     */
     overflow-y: hidden;
+    background-color: whitesmoke;
 }
 .flex-dark-wrapper {
     display: flex;
@@ -269,7 +270,7 @@
 .target-wrapper {
     display: flex;
     flex-grow: 1;
-    flex-basis: 0;
+    /* flex-basis: 0; */
 
     padding-top: $space;
     min-height: 0; /* this makes it work in Firefox */
@@ -371,12 +372,44 @@ $fade-out-distance: 15px;
     overflow: hidden;
 }
 
-/* @media screen and (prefers-color-scheme: dark) {
-    .page-wrapper {
-        background-color: $ui-dark-primary;
+@media only screen and (max-width: 1200px) {
+    .flex-dark-wrapper {
+        flex-direction: column;
+        height: auto;
     }
-
+    .flex-wrapper {
+        flex-direction: column;
+        height: auto;
+    }
+    .stage-and-target-wrapper {
+        flex-direction: row;
+    }
     .body-wrapper {
-        background-color: $ui-dark-primary;
+        width: 100%;
     }
-} */
+}
+
+@media only screen and (max-width: 840px) {
+    /* .body-wrapper {
+        width: 100%;
+    } */
+    /* .flex-dark-wrapper {
+        flex-direction: column;
+        height: auto;
+    }
+    .flex-wrapper {
+        flex-direction: column;
+        height: auto;
+    }
+    .stage-and-target-wrapper {
+        flex-direction: row;
+    } */
+
+    .stage-and-target-wrapper {
+        flex-direction: column;
+    }
+    .target-wrapper {
+        flex-basis: 1;
+        -webkit-flex-basis: 1;
+    }
+}

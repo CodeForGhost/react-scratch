@@ -154,3 +154,9 @@ stage doesn't "spill" out from under its rounded corners. instead, shift these o
         opacity: 0;
     }
 }
+
+@media only screen and (max-width: 840px) {
+    .stage-wrapper {
+        padding-left: calc(25% - 70px);
+    }
+}

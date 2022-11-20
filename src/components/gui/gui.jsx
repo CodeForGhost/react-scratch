@@ -56,6 +56,11 @@ export const ThemeContext = createContext(null);
 
 const GUIComponent = props => {
     // console.log("Rendering GUIComponent")
+    // const [customWidth, setCustomWidth] = useState(screen.width);
+    // console.log(customWidth);
+
+
+
     const isDarkModeEnabled =
         localStorage.getItem("darkMode") === "true" ? true : false;
 
@@ -64,18 +69,6 @@ const GUIComponent = props => {
     const toggleTheme = () => {
         setTheme((curr) => (curr === "light" ? "dark" : "light"));
     }
-    // console.log("theme", theme);
-    // console.log("styles", styles);
-
-    // useEffect(() => {
-    //     // function test() {
-    //     //     console.log("darkMode clicked")
-    //     //     setDarkMode(!darkMode);
-    //     // }
-    //     console.log("Use Effect is Running");
-    // });
-
-    // console.log("darkMode", darkMode)
 
     const {
         accountNavOpen,
@@ -167,78 +160,78 @@ const GUIComponent = props => {
 
 
     // console.log("tabClassNames.tab", styles.tab);
-    return (<MediaQuery minWidth={layout.fullSizeMinWidth}>{isFullSize => {
-        const stageSize = resolveStageSize(stageSizeMode, isFullSize);
-
-        return isPlayerOnly ? (
-            <StageWrapper
-                isFullScreen={isFullScreen}
-                isRendererSupported={isRendererSupported}
-                isRtl={isRtl}
-                loading={loading}
-                stageSize={STAGE_SIZE_MODES.large}
-                vm={vm}
-            >
-                {alertsVisible ? (
-                    <Alerts className={styles.alertsContainer} />
-                ) : null}
-            </StageWrapper>
-        ) : (
-            // <ThemeContext.Provider value={{ theme, toggleTheme }}>
-            <Box
-                // id={theme}
-                // id="dark"
-                className={localStorage.getItem("darkMode") == "true" ? styles.pageDarkWrapper : styles.pageWrapper}
-                dir={isRtl ? 'rtl' : 'ltr'}
-                {...componentProps}
-            >
-                {telemetryModalVisible ? (
-                    <TelemetryModal
-                        isRtl={isRtl}
-                        isTelemetryEnabled={isTelemetryEnabled}
-                        onCancel={onTelemetryModalCancel}
-                        onOptIn={onTelemetryModalOptIn}
-                        onOptOut={onTelemetryModalOptOut}
-                        onRequestClose={onRequestCloseTelemetryModal}
-                        onShowPrivacyPolicy={onShowPrivacyPolicy}
-                    />
-                ) : null}
-                {loading ? (
-                    <Loader />
-                ) : null}
-                {isCreating ? (
-                    <Loader messageId="gui.loader.creating" />
-                ) : null}
-                {isRendererSupported ? null : (
-                    <WebGlModal isRtl={isRtl} />
-                )}
-                {tipsLibraryVisible ? (
-                    <TipsLibrary />
-                ) : null}
-                {cardsVisible ? (
-                    <Cards />
-                ) : null}
-                {alertsVisible ? (
-                    <Alerts className={styles.alertsContainer} />
-                ) : null}
-                {connectionModalVisible ? (
-                    <ConnectionModal
-                        vm={vm}
-                    />
-                ) : null}
-                {costumeLibraryVisible ? (
-                    <CostumeLibrary
-                        vm={vm}
-                        onRequestClose={onRequestCloseCostumeLibrary}
-                    />
-                ) : null}
-                {backdropLibraryVisible ? (
-                    <BackdropLibrary
-                        vm={vm}
-                        onRequestClose={onRequestCloseBackdropLibrary}
-                    />
-                ) : null}
-                {/* <MenuBar
+    return (
+        <MediaQuery minWidth={layout.fullSizeMinWidth}>{isFullSize => {
+            const stageSize = resolveStageSize(stageSizeMode, isFullSize);
+            return isPlayerOnly ? (
+                <StageWrapper
+                    isFullScreen={isFullScreen}
+                    isRendererSupported={isRendererSupported}
+                    isRtl={isRtl}
+                    loading={loading}
+                    stageSize={STAGE_SIZE_MODES.large}
+                    vm={vm}
+                >
+                    {alertsVisible ? (
+                        <Alerts className={styles.alertsContainer} />
+                    ) : null}
+                </StageWrapper>
+            ) : (
+                // <ThemeContext.Provider value={{ theme, toggleTheme }}>
+                <Box
+                    // id={theme}
+                    // id="dark"
+                    className={localStorage.getItem("darkMode") == "true" ? styles.pageDarkWrapper : styles.pageWrapper}
+                    dir={isRtl ? 'rtl' : 'ltr'}
+                    {...componentProps}
+                >
+                    {telemetryModalVisible ? (
+                        <TelemetryModal
+                            isRtl={isRtl}
+                            isTelemetryEnabled={isTelemetryEnabled}
+                            onCancel={onTelemetryModalCancel}
+                            onOptIn={onTelemetryModalOptIn}
+                            onOptOut={onTelemetryModalOptOut}
+                            onRequestClose={onRequestCloseTelemetryModal}
+                            onShowPrivacyPolicy={onShowPrivacyPolicy}
+                        />
+                    ) : null}
+                    {loading ? (
+                        <Loader />
+                    ) : null}
+                    {isCreating ? (
+                        <Loader messageId="gui.loader.creating" />
+                    ) : null}
+                    {isRendererSupported ? null : (
+                        <WebGlModal isRtl={isRtl} />
+                    )}
+                    {tipsLibraryVisible ? (
+                        <TipsLibrary />
+                    ) : null}
+                    {cardsVisible ? (
+                        <Cards />
+                    ) : null}
+                    {alertsVisible ? (
+                        <Alerts className={styles.alertsContainer} />
+                    ) : null}
+                    {connectionModalVisible ? (
+                        <ConnectionModal
+                            vm={vm}
+                        />
+                    ) : null}
+                    {costumeLibraryVisible ? (
+                        <CostumeLibrary
+                            vm={vm}
+                            onRequestClose={onRequestCloseCostumeLibrary}
+                        />
+                    ) : null}
+                    {backdropLibraryVisible ? (
+                        <BackdropLibrary
+                            vm={vm}
+                            onRequestClose={onRequestCloseBackdropLibrary}
+                        />
+                    ) : null}
+                    {/* <MenuBar
                     accountNavOpen={accountNavOpen}
                     authorId={authorId}
                     authorThumbnailUrl={authorThumbnailUrl}
@@ -269,136 +262,136 @@ const GUIComponent = props => {
                     onStartSelectingFileUpload={onStartSelectingFileUpload}
                     onToggleLoginOpen={onToggleLoginOpen}
                 /> */}
-                <Box className={styles.bodyWrapper}>
-                    <Box className={localStorage.getItem("darkMode") == "true" ? styles.flexDarkWrapper : styles.flexWrapper}>
-                        <Box className={styles.editorWrapper}>
-                            <Tabs
-                                forceRenderTabPanel
-                                className={tabClassNames.tabs}
-                                selectedIndex={activeTabIndex}
-                                selectedTabClassName={tabClassNames.tabSelected}
-                                selectedTabPanelClassName={tabClassNames.tabPanelSelected}
-                                onSelect={onActivateTab}
-                            >
-                                <TabList className={tabClassNames.tabList}>
-                                    <Tab className={localStorage.getItem("darkMode") == "true" ? tabClassNames.tabDark : tabClassNames.tab}>
-                                        <img
-                                            draggable={false}
-                                            src={codeIcon}
-                                        />
-                                        <FormattedMessage
-                                            defaultMessage="Code"
-                                            description="Button to get to the code panel"
-                                            id="gui.gui.codeTab"
-                                        />
-                                    </Tab>
-                                    <Tab
-                                        className={localStorage.getItem("darkMode") == "true" ? tabClassNames.tabDark : tabClassNames.tab}
-                                        onClick={onActivateCostumesTab}
-                                    >
-                                        <img
-                                            draggable={false}
-                                            src={costumesIcon}
-                                        />
-                                        {targetIsStage ? (
-                                            <FormattedMessage
-                                                defaultMessage="Backdrops"
-                                                description="Button to get to the backdrops panel"
-                                                id="gui.gui.backdropsTab"
+                    <Box className={styles.bodyWrapper}>
+                        <Box className={localStorage.getItem("darkMode") == "true" ? styles.flexDarkWrapper : styles.flexWrapper}>
+                            <Box className={styles.editorWrapper}>
+                                <Tabs
+                                    forceRenderTabPanel
+                                    className={tabClassNames.tabs}
+                                    selectedIndex={activeTabIndex}
+                                    selectedTabClassName={tabClassNames.tabSelected}
+                                    selectedTabPanelClassName={tabClassNames.tabPanelSelected}
+                                    onSelect={onActivateTab}
+                                >
+                                    <TabList className={tabClassNames.tabList}>
+                                        <Tab className={localStorage.getItem("darkMode") == "true" ? tabClassNames.tabDark : tabClassNames.tab}>
+                                            <img
+                                                draggable={false}
+                                                src={codeIcon}
                                             />
-                                        ) : (
                                             <FormattedMessage
-                                                defaultMessage="Costumes"
-                                                description="Button to get to the costumes panel"
-                                                id="gui.gui.costumesTab"
+                                                defaultMessage="Code"
+                                                description="Button to get to the code panel"
+                                                id="gui.gui.codeTab"
                                             />
-                                        )}
-                                    </Tab>
-                                    <Tab
-                                        className={localStorage.getItem("darkMode") == "true" ? tabClassNames.tabDark : tabClassNames.tab}
-                                        onClick={onActivateSoundsTab}
-                                    >
-                                        <img
-                                            draggable={false}
-                                            src={soundsIcon}
-                                        />
-                                        <FormattedMessage
-                                            defaultMessage="Sounds"
-                                            description="Button to get to the sounds panel"
-                                            id="gui.gui.soundsTab"
-                                        />
-                                    </Tab>
-                                </TabList>
-                                <TabPanel className={tabClassNames.tabPanel}>
-                                    <Box className={styles.blocksWrapper}>
-                                        <Blocks
-                                            canUseCloud={canUseCloud}
-                                            grow={1}
-                                            isVisible={blocksTabVisible}
-                                            options={{
-                                                media: `${basePath}static/blocks-media/`
-                                            }}
-                                            stageSize={stageSize}
-                                            vm={vm}
-                                            darkMode={isDarkModeEnabled}
-                                        />
-                                    </Box>
-                                    <Box className={styles.extensionButtonContainer}>
-                                        <button
-                                            className={styles.extensionButton}
-                                            title={intl.formatMessage(messages.addExtension)}
-                                            onClick={onExtensionButtonClick}
+                                        </Tab>
+                                        <Tab
+                                            className={localStorage.getItem("darkMode") == "true" ? tabClassNames.tabDark : tabClassNames.tab}
+                                            onClick={onActivateCostumesTab}
                                         >
                                             <img
-                                                className={styles.extensionButtonIcon}
                                                 draggable={false}
-                                                src={addExtensionIcon}
+                                                src={costumesIcon}
                                             />
-                                        </button>
-                                    </Box>
-                                    <Box className={styles.watermark}>
-                                        <Watermark />
-                                    </Box>
-                                </TabPanel>
-                                <TabPanel className={tabClassNames.tabPanel}>
-                                    {costumesTabVisible ? <CostumeTab vm={vm} darkMode={darkMode} /> : null}
-                                </TabPanel>
-                                <TabPanel className={tabClassNames.tabPanel}>
-                                    {soundsTabVisible ? <SoundTab vm={vm} darkMode={darkMode} /> : null}
-                                </TabPanel>
-                            </Tabs>
-                            {/* {backpackVisible ? (
+                                            {targetIsStage ? (
+                                                <FormattedMessage
+                                                    defaultMessage="Backdrops"
+                                                    description="Button to get to the backdrops panel"
+                                                    id="gui.gui.backdropsTab"
+                                                />
+                                            ) : (
+                                                <FormattedMessage
+                                                    defaultMessage="Costumes"
+                                                    description="Button to get to the costumes panel"
+                                                    id="gui.gui.costumesTab"
+                                                />
+                                            )}
+                                        </Tab>
+                                        <Tab
+                                            className={localStorage.getItem("darkMode") == "true" ? tabClassNames.tabDark : tabClassNames.tab}
+                                            onClick={onActivateSoundsTab}
+                                        >
+                                            <img
+                                                draggable={false}
+                                                src={soundsIcon}
+                                            />
+                                            <FormattedMessage
+                                                defaultMessage="Sounds"
+                                                description="Button to get to the sounds panel"
+                                                id="gui.gui.soundsTab"
+                                            />
+                                        </Tab>
+                                    </TabList>
+                                    <TabPanel className={tabClassNames.tabPanel}>
+                                        <Box className={styles.blocksWrapper}>
+                                            <Blocks
+                                                canUseCloud={canUseCloud}
+                                                grow={1}
+                                                isVisible={blocksTabVisible}
+                                                options={{
+                                                    media: `${basePath}static/blocks-media/`
+                                                }}
+                                                stageSize={stageSize}
+                                                vm={vm}
+                                                darkMode={isDarkModeEnabled}
+                                            />
+                                        </Box>
+                                        <Box className={styles.extensionButtonContainer}>
+                                            <button
+                                                className={styles.extensionButton}
+                                                title={intl.formatMessage(messages.addExtension)}
+                                                onClick={onExtensionButtonClick}
+                                            >
+                                                <img
+                                                    className={styles.extensionButtonIcon}
+                                                    draggable={false}
+                                                    src={addExtensionIcon}
+                                                />
+                                            </button>
+                                        </Box>
+                                        <Box className={styles.watermark}>
+                                            <Watermark />
+                                        </Box>
+                                    </TabPanel>
+                                    <TabPanel className={tabClassNames.tabPanel}>
+                                        {costumesTabVisible ? <CostumeTab vm={vm} darkMode={darkMode} /> : null}
+                                    </TabPanel>
+                                    <TabPanel className={tabClassNames.tabPanel}>
+                                        {soundsTabVisible ? <SoundTab vm={vm} darkMode={darkMode} /> : null}
+                                    </TabPanel>
+                                </Tabs>
+                                {/* {backpackVisible ? (
                                 <Backpack host={backpackHost} />
                             ) : null} */}
-                        </Box>
+                            </Box>
 
-                        <Box className={classNames(styles.stageAndTargetWrapper, styles[stageSize])}>
-                            <StageWrapper
-                                isFullScreen={isFullScreen}
-                                isRendererSupported={isRendererSupported}
-                                isRtl={isRtl}
-                                stageSize={stageSize}
-                                vm={vm}
-                                toggleDarkMode={() => {
-                                    // console.log("darkMode clicked")
-                                    () => console.log("")
-                                    setDarkMode(!darkMode);
-                                }}
-                            // toggleDarkMode={this.test}
-                            />
-                            <Box className={styles.targetWrapper}>
-                                <TargetPane
+                            <Box className={classNames(styles.stageAndTargetWrapper, styles[stageSize])}>
+                                <StageWrapper
+                                    isFullScreen={isFullScreen}
+                                    isRendererSupported={isRendererSupported}
+                                    isRtl={isRtl}
                                     stageSize={stageSize}
                                     vm={vm}
+                                    toggleDarkMode={() => {
+                                        // console.log("darkMode clicked")
+                                        () => console.log("")
+                                        setDarkMode(!darkMode);
+                                    }}
+                                // toggleDarkMode={this.test}
                                 />
+                                <Box className={styles.targetWrapper}>
+                                    <TargetPane
+                                        stageSize={stageSize}
+                                        vm={vm}
+                                    />
+                                </Box>
                             </Box>
                         </Box>
                     </Box>
+                    <DragLayer />
                 </Box>
-                <DragLayer />
-            </Box>
-        );
-    }}</MediaQuery >);
+            );
+        }}</MediaQuery >);
 };
 
 GUIComponent.propTypes = {

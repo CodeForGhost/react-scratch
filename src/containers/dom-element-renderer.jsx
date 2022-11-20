@@ -28,7 +28,7 @@ class DOMElementRenderer extends React.Component {
         this.container = c;
     }
     render() {
-        console.log("DOMElementRenderer", this.props);
+        // console.log("DOMElementRenderer", this.props);
         // Apply props to the DOM element, so its attributes
         // are updated as if it were a normal component.
         // Look at me, I'm the React now!

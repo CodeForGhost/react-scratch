@@ -64,7 +64,7 @@ class LoupeComponent extends React.Component {
         this.canvas = element;
     }
     render() {
-        console.log("LoupeComponent", this.props)
+        // console.log("LoupeComponent", this.props)
         const {
             colorInfo,
             ...boxProps

@@ -56,7 +56,7 @@ class Stage extends React.Component {
             this.canvas = this.renderer.canvas;
         } else {
             this.canvas = document.createElement('canvas');
-            console.log("this.canvas", this.canvas);
+            // console.log("this.canvas", this.canvas);
 
             // const ctx = this.canvas.getContext("2d")
             // ctx.fillStyle = "green";
@@ -417,7 +417,7 @@ class Stage extends React.Component {
             onActivateColorPicker, // eslint-disable-line no-unused-vars
             ...props
         } = this.props;
-        console.log("Stage", this.props);
+        // console.log("Stage", this.props);
         return (
             <StageComponent
                 canvas={this.canvas}

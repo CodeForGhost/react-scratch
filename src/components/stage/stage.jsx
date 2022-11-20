@@ -32,8 +32,10 @@ const StageComponent = props => {
         ...boxProps
     } = props;
 
+    // console.log("stageSize", screen.width);
     const stageDimensions = getStageDimensions(stageSize, isFullScreen);
-    console.log("StageComponent", props);
+    const customWidth = screen.width <= 840 ? { height: "100%", width: "100%" } : stageDimensions;
+    console.log(customWidth);
     return (
         <React.Fragment>
             <Box
@@ -48,15 +50,15 @@ const StageComponent = props => {
                         { [styles.fullScreen]: isFullScreen }
                     )}
                     style={{
-                        height: stageDimensions.height,
-                        width: stageDimensions.width
+                        height: customWidth.height,
+                        width: customWidth.width
                     }}
                 >
                     <DOMElementRenderer
                         domElement={canvas}
                         style={{
-                            height: stageDimensions.height,
-                            width: stageDimensions.width,
+                            height: customWidth.height,
+                            width: customWidth.width,
                         }}
                         {...boxProps}
                     />
